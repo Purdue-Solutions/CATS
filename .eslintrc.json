@@ -1,5 +1,3 @@
 {
-    "extends": [
-        "plugin:react/recommended"
-    ]
+  "extends": "next/core-web-vitals"
 }
