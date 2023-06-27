@@ -1,4 +1,5 @@
 import { createStyles, Title, Text, Button, Container, rem, Image, Center } from '@mantine/core';
+import { useRouter } from 'next/router';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -88,6 +89,7 @@ const useStyles = createStyles((theme) => ({
 
 export function Hero() {
   const { classes } = useStyles();
+  const router = useRouter();
 
   return (
     <Container className={ classes.wrapper } size={1400}>
@@ -111,12 +113,18 @@ export function Hero() {
         </Container>
 
         <div className={ classes.controls }>
-          <Button className={ classes.control } size="lg" variant="default" color="gray">
+          <Button 
+            className={ classes.control } 
+            size="lg"
+            onClick={() => 
+              router.push("https://www.purduesolutions.org")
+            } 
+          >
             Learn More
           </Button>
-          <Button className={ classes.control } size="lg">
+          {/* <Button className={ classes.control } size="lg">
             Apply Now
-          </Button>
+          </Button> */}
         </div>
       </div>
     </Container>
