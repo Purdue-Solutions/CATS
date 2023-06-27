@@ -1,1 +1,2 @@
-Purdue Consulting Applicant Tracking System (CATS)
+### Consulting Applicant Tracking System
+
