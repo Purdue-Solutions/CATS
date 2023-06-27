@@ -1,5 +1,8 @@
-import { createStyles, Title, Text, Button, Container, rem, Image, Center } from '@mantine/core';
+import { createStyles, Title, Text, Button, Container, rem, Center } from '@mantine/core';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { AuthContext } from '@/contexts/AuthContext';
+import { useContext } from 'react';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -91,11 +94,13 @@ export function Hero() {
   const { classes } = useStyles();
   const router = useRouter();
 
+  console.log(useContext(AuthContext))
+
   return (
     <Container className={ classes.wrapper } size={1400}>
       <div className={ classes.inner }>
         <Center>
-          <Image src="/black_cat.png" width={400} />
+          <Image src="/black_cat.png" width={400} height={400} alt="Black cat on orange background"/>
         </Center>
 
         <Title className={ classes.title }>
