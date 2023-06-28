@@ -1,6 +1,5 @@
 import { createStyles, Title, Text, Button, Container, rem, Center } from '@mantine/core';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { AuthContext } from '@/contexts/AuthContext';
 import { useContext } from 'react';
 
@@ -92,9 +91,6 @@ const useStyles = createStyles((theme) => ({
 
 export function Hero() {
   const { classes } = useStyles();
-  const router = useRouter();
-
-  console.log(useContext(AuthContext))
 
   return (
     <Container className={ classes.wrapper } size={1400}>
@@ -103,7 +99,7 @@ export function Hero() {
           <Image src="/black_cat.png" width={400} height={400} alt="Black cat on orange background"/>
         </Center>
 
-        <Title className={ classes.title }>
+        <Title className={ classes.title } id='title'>
           Interested in{' '}
           <Text component="span" className={ classes.highlight } inherit>
             Purdue Solutions
@@ -111,19 +107,20 @@ export function Hero() {
           ?
         </Title>
 
-        <Container p={0} size={600}>
+        <Container p={0} size={600} id="subtext">
           <Text size="lg" color="dimmed" className={ classes.description }>
             Consulting Applicant Tracking System (CATS)
           </Text>
         </Container>
 
         <div className={ classes.controls }>
-          <Button 
+          <Button
+            component='a'
             className={ classes.control } 
             size="lg"
-            onClick={() => 
-              router.push("https://www.purduesolutions.org")
-            } 
+            href="https://www.purduesolutions.org"
+            target='_blank'
+            id='learn-more'
           >
             Learn More
           </Button>
