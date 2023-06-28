@@ -1,0 +1,29 @@
+name: CI
+on: [push]
+jobs:
+  lhci:
+    name: Lighthouse
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Node Check
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - name: build
+        run: |
+          npm install
+          npm run build
+      - name: run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.11.x
+          lhci autorun
+          
+  codecov:
+    name: CodeCov
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run CodeCov
+        uses: codecov/codecov-action@v3
+        env: 
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
