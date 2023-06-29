@@ -1,8 +1,8 @@
 import React from 'react'
-import { Hero } from './Hero'
+import Hero from './Hero'
 
 
-describe('<Hero></Hero>', () => {
+describe('<Hero>', () => {
   it('renders hero', () => {
     cy.mount(<Hero />)
     cy.get('[alt="Black cat on orange background"]')
