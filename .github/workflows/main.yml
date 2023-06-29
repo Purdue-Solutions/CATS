@@ -1,4 +1,4 @@
-name: unit
+name: E2E
 
 on: [push]
 
@@ -9,12 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Component
-        uses: cypress-io/github-action@v5
-        with:
-          component: true
-
-      - name: E2E
+      - name: Run Tests
         uses: cypress-io/github-action@v5
         with:
           browser: chrome

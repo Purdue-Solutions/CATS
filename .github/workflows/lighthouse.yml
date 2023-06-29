@@ -14,6 +14,5 @@ jobs:
         with:
           urls: |
             https://cats.purduesolutions.org/
-            https://cats-git-dev-purduesolutions.vercel.app/
           uploadArtifacts: true
           temporaryPublicStorage: true

@@ -1,0 +1,15 @@
+name: unit
+
+on: [push]
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Component
+        uses: cypress-io/github-action@v5
+        with:
+          component: true
