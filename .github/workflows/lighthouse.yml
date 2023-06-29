@@ -1,6 +1,8 @@
-name: lighthouse
+name: nightly
 
-on: [push]
+on:
+  schedule:
+    - cron: '0 2 * * *'
 
 jobs:
   generate_lighthouse_audit:
