@@ -1,7 +1,5 @@
 import { createStyles, Title, Text, Button, Container, rem, Center } from '@mantine/core';
 import Image from 'next/image';
-import { AuthContext } from '@/contexts/AuthContext';
-import { useContext } from 'react';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -18,20 +16,6 @@ const useStyles = createStyles((theme) => ({
   inner: {
     position: 'relative',
     zIndex: 1,
-  },
-
-  dots: {
-    position: 'absolute',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[1],
-
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  dotsLeft: {
-    left: 0,
-    top: 0,
   },
 
   title: {
@@ -73,23 +57,19 @@ const useStyles = createStyles((theme) => ({
   },
 
   control: {
-    '&:not(:first-of-type)': {
-      marginLeft: theme.spacing.md,
-    },
+    marginLeft: theme.spacing.md,
 
     [theme.fn.smallerThan('xs')]: {
       height: rem(42),
       fontSize: theme.fontSizes.md,
 
-      '&:not(:first-of-type)': {
-        marginTop: theme.spacing.md,
-        marginLeft: 0,
-      },
+      marginTop: theme.spacing.md,
+      marginLeft: 0,
     },
   },
 }));
 
-export function Hero() {
+export default function Hero() {
   const { classes } = useStyles();
 
   return (
@@ -120,13 +100,21 @@ export function Hero() {
             size="lg"
             href="https://www.purduesolutions.org"
             target='_blank'
+            color='gray'
+            variant='default'
             id='learn-more'
           >
             Learn More
           </Button>
-          {/* <Button className={ classes.control } size="lg">
+          <Button 
+            component='a'
+            className={ classes.control } 
+            size="lg"
+            href="/login"
+            id='apply-now'
+          >
             Apply Now
-          </Button> */}
+          </Button>
         </div>
       </div>
     </Container>

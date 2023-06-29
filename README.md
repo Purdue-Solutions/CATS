@@ -1,13 +1,15 @@
 <img src="public/black_cat.png" alt="black cat" width="200"/>
 
-# Consulting Applicant Tracking System (CATS)
-Unified platform for tracking Purdue Solutions applications. Coming in Fall 2023.
-|                                                         PROD                                                         | DEV           
-| ---------------------------------------------------------------------------------------------------------------------| ---
-|![example branch parameter](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml/badge.svg?branch=prod)| ![example branch parameter](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml/badge.svg?branch=dev)
+# Consulting Applicant Tracking System (CATS) 
+[![E2E](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml) 
+[![UNIT](https://github.com/Purdue-Solutions/CATS/actions/workflows/component.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/component.yml) 
+[![NIGHTLY](https://github.com/Purdue-Solutions/CATS/actions/workflows/nightly.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/nightly.yml) 
+[![VERCEL](https://img.shields.io/github/deployments/Purdue-Solutions/CATS/production?logo=vercel&label=Vercel)](https://cats.purduesolutions.org)
 
+Unified platform for tracking Purdue Solutions applications. Coming in Fall 2023.
 
 Author: [Adithya Chandrasekar](https://github.com/adithyachan)
+
 © Purdue Solutions Consulting 2023
 
 
