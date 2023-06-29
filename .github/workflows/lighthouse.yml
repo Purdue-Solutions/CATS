@@ -7,9 +7,10 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - name: Audit preview URL with Lighthouse
+      - uses: actions/checkout@v3
+      - name: Audit deployments with lighthouse
         id: lighthouse_audit
-        uses: treosh/lighthouse-ci-action@v3
+        uses: treosh/lighthouse-ci-action@v10
         with:
           urls: |
             https://cats.purduesolutions.org/
