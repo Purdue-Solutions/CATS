@@ -20,7 +20,7 @@ describe('<Login>', () => {
     .should('have.attr', 'href', '/register')
 
     // email text input
-    cy.get('#email-input')
+    cy.get('#email-inpu')
     .should('have.attr', 'placeholder', 'pete@purdue.edu')
 
     // password input
