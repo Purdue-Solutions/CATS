@@ -3,7 +3,7 @@
 # Consulting Applicant Tracking System (CATS) 
 [![E2E](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/main.yml) 
 [![UNIT](https://github.com/Purdue-Solutions/CATS/actions/workflows/component.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/component.yml) 
-[![LIGHTHOUSE](https://github.com/Purdue-Solutions/CATS/actions/workflows/lighthouse.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/lighthouse.yml) 
+[![NIGHTLY](https://github.com/Purdue-Solutions/CATS/actions/workflows/nightly.yml/badge.svg)](https://github.com/Purdue-Solutions/CATS/actions/workflows/nightly.yml) 
 [![VERCEL](https://img.shields.io/github/deployments/Purdue-Solutions/CATS/production?logo=vercel&label=Vercel)](https://cats.purduesolutions.org)
 
 Unified platform for tracking Purdue Solutions applications. Coming in Fall 2023.
