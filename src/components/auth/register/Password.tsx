@@ -1,7 +1,7 @@
-import { Box, Progress, PasswordInput, Group, Text, Center } from '@mantine/core';
+import { Box, Progress, PasswordInput, Group, Text, Center, Popover } from '@mantine/core';
 import { useInputState } from '@mantine/hooks';
 import { IconCheck, IconX } from '@tabler/icons-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function PasswordRequirement({ meets, label }: { meets: boolean; label: string }) {
   return (
@@ -33,9 +33,11 @@ function getStrength(password: string) {
   return Math.max(100 - (100 / (requirements.length + 1)) * multiplier, 0);
 }
 
-export default function Password(props: {setPassword: (value: string) => void}) {
+export default function Password(props: {setPassword: (value: string) => void, setPasswordError: (value: JSX.Element | null) => void}) {
   const [value, setValue] = useInputState('');
   const strength = getStrength(value);
+  const [popoverOpened, setPopoverOpened] = useState(false);
+
   const checks = requirements.map((requirement, index) => (
     <PasswordRequirement key={index} label={requirement.label} meets={requirement.re.test(value)} />
   ));
@@ -54,27 +56,36 @@ export default function Password(props: {setPassword: (value: string) => void}) 
     ));
   
   useEffect(() => {
-    if (strength == 100) {
-      props.setPassword(value)
-    }
-  }, [value])
+    props.setPassword(value)
+    props.setPasswordError(value && strength != 100 ? <Text color='red' size="sm">Password does not meet requirements</Text> : null)
+  }, [props, value, strength])
 
   return (
     <div>
-      <PasswordInput
-        value={value}
-        onChange={setValue}
-        placeholder="Your password"
-        label="Password"
-        required
-      />
-
-      <Group spacing={5} grow mt="xs" mb="md">
-        {bars}
-      </Group>
-
-      <PasswordRequirement label="Has at least 6 characters" meets={value.length > 5} />
-      {checks}
+      <Popover opened={popoverOpened} position="bottom" width="target" transitionProps={{ transition: 'pop' }}>
+        <Popover.Target>
+          <div
+            onFocusCapture={() => setPopoverOpened(true)}
+            onBlurCapture={() => setPopoverOpened(false)}
+          >
+            <PasswordInput
+              mt="md"
+              value={value}
+              onChange={setValue}
+              placeholder="Your password"
+              label="Password"
+              required
+            />
+          </div>
+        </Popover.Target>
+        <Popover.Dropdown>
+          <Group spacing={5} grow mt="xs" mb="md">
+            {bars}
+          </Group>
+          <PasswordRequirement label="Has at least 6 characters" meets={value.length > 5} />
+          {checks}
+        </Popover.Dropdown>
+      </Popover>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import {
   TextInput,
   PasswordInput,
-  Checkbox,
   Anchor,
   Paper,
   Title,
@@ -12,8 +11,6 @@ import {
   Center,
 } from '@mantine/core';
 import Image from 'next/image';
-import Password from './Password';
-import { useState } from 'react';
 import { useInputState } from '@mantine/hooks';
 
 export default function Login() {
