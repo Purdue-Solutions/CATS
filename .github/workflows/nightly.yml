@@ -2,7 +2,7 @@ name: nightly
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '46 22 * * *'
 
 jobs:
   generate_lighthouse_audit:
