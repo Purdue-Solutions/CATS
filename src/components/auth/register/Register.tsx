@@ -15,6 +15,7 @@ import Password from './Password';
 import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/router';
+import { IconX } from '@tabler/icons-react';
 
 const purdueEmailRegex = /[a-zA-Z0-9_.-]+@purdue.edu$/
 
@@ -45,6 +46,8 @@ export default function Register() {
       notifications.show({
         title: 'Unable to create account',
         message: `Account creation unsuccessful. Do you already have an account?`,
+        color: "red",
+        icon: <IconX />,
         autoClose: 3000
       })
     }
