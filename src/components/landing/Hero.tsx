@@ -1,5 +1,6 @@
 import { createStyles, Title, Text, Button, Container, rem, Center } from '@mantine/core';
 import Image from 'next/image';
+import MainLogo from '../misc/MainLogo';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -76,7 +77,7 @@ export default function Hero() {
     <Container className={ classes.wrapper } size={1400}>
       <div className={ classes.inner }>
         <Center>
-          <Image src="/black_cat.png" width={400} height={400} alt="Black cat on orange background"/>
+          <MainLogo width={ 400 } />
         </Center>
 
         <Title className={ classes.title } id='title'>

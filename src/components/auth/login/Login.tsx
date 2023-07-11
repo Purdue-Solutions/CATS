@@ -1,3 +1,4 @@
+import MainLogo from '@/components/misc/MainLogo';
 import {
   TextInput,
   PasswordInput,
@@ -10,7 +11,6 @@ import {
   Button,
   Center,
 } from '@mantine/core';
-import Image from 'next/image';
 import { useInputState } from '@mantine/hooks';
 
 export default function Login() {
@@ -20,7 +20,7 @@ export default function Login() {
   return (
     <>
       <Center mt={40}>
-        <Image src="/black_cat.png" width={200} height={200} alt="CATS Logo"/>
+        <MainLogo width={200} />
       </Center>
       <Container size={420} my={40}>
         <Title

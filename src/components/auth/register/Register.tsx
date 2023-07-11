@@ -10,12 +10,14 @@ import {
   Center,
 } from '@mantine/core';
 import Image from 'next/image';
+import Link from 'next/link'
 import { useInputState } from '@mantine/hooks';
 import Password from './Password';
 import { useState } from 'react';
 import { notifications } from '@mantine/notifications';
 import { useRouter } from 'next/router';
 import { IconX } from '@tabler/icons-react';
+import MainLogo from '@/components/misc/MainLogo';
 
 const purdueEmailRegex = /[a-zA-Z0-9_.-]+@purdue.edu$/
 
@@ -58,7 +60,7 @@ export default function Register() {
   return (
     <>
       <Center mt={40}>
-        <Image src="/black_cat.png" width={200} height={200} alt="CATS Logo"/>
+        <MainLogo width={200} />
       </Center>
       <Container size={420} my={40}>
         <Title

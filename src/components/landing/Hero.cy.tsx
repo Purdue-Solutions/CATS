@@ -5,7 +5,7 @@ import Hero from './Hero'
 describe('<Hero>', () => {
   it('renders hero', () => {
     cy.mount(<Hero />)
-    cy.get('[alt="Black cat on orange background"]')
+    cy.get('[alt="CATS Logo"]')
     .should('be.visible')
     
     cy.get('#learn-more')
