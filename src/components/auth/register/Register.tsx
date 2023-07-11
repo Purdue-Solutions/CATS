@@ -32,7 +32,9 @@ export default function Register() {
     <Text color='red' size="sm">Passwords do not match</Text> : null
   
   const router = useRouter();
-  const [accountSuccess, setAccountSuccess] = useState(false);
+  // TODO: use this as indicator for account creation success in a useEffect block
+  const [accountSuccess, setAccountSuccess] = useState(false); 
+
 
   const createAccount = () => {
     if (accountSuccess) {
