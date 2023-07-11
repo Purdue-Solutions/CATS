@@ -1,21 +1,49 @@
-import MainLogo from '@/components/misc/MainLogo';
 import {
   TextInput,
-  PasswordInput,
   Anchor,
   Paper,
   Title,
   Text,
   Container,
-  Group,
   Button,
   Center,
 } from '@mantine/core';
 import { useInputState } from '@mantine/hooks';
+import { notifications } from '@mantine/notifications';
+import { IconCheck, IconX } from '@tabler/icons-react';
+import MainLogo from '@/components/misc/MainLogo';
+import { sendSignInEmail } from '@/lib/firebase/utils';
+import { AuthError } from 'firebase/auth';
+
+const purdueEmailRegex = /[a-zA-Z0-9_.-]+@purdue.edu$/
 
 export default function Login() {
   const [email, setEmail] = useInputState('');
-  const [password, setPassword] = useInputState('');
+  const emailError = email && !purdueEmailRegex.test(email) ? 
+    <Text color='red' size="sm">Invalid Purdue email</Text> : null
+  
+
+  const createAccount = async () => {
+    try {
+      await sendSignInEmail(email);
+      notifications.show({
+        title: 'Sign In Email',
+        color: 'green',
+        message: `An email was sent to ${email}. You can sign in through the link in the email. Please check your spam!`,
+        icon: <IconCheck />,
+        autoClose: 1000000
+      })
+    }
+    catch (error) {
+      notifications.show({
+        title: 'Unable to send email',
+        message: (error as AuthError).message,
+        color: "red",
+        icon: <IconX />,
+        autoClose: 3000
+      })
+    }
+  }
 
   return (
     <>
@@ -28,40 +56,27 @@ export default function Login() {
           id="welcome-back"
           sx={(theme) => ({ fontFamily: `${theme.fontFamily}`, fontWeight: 900 })}
         >
-          Welcome back!
+          {"Let's get started"}
         </Title>
         <Text color="dimmed" size="sm" align="center" mt={5}>
-          Do not have an account yet?{' '}
-          <Anchor size="sm" href='/register' id='create-account'>
-            Create account
+          Not sure what you are getting into?{' '}
+          <Anchor size="sm" href='https://www.purduesolutions.org' id='log-in'>
+            Learn More
           </Anchor>
         </Text>
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <TextInput label="Purdue Email" placeholder="pete@purdue.edu" 
-            onChange={ setEmail } required id="email-input"/>
-            <Group position="apart" mb={5} mt="md">
-              <Text component="label" htmlFor="your-password" size="sm" weight={500}>
-                Password
-              </Text>
-              <Anchor
-                id='forgot-password'
-                href="/forgotpassword"
-                onClick={(event) => event.preventDefault()}
-                sx={(theme) => ({
-                  paddingTop: 2,
-                  color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
-                  fontWeight: 500,
-                  fontSize: theme.fontSizes.xs,
-                })}
-              >
-                Forgot your password?
-              </Anchor>
-            </Group>
-            <PasswordInput placeholder="Your password" 
-                required id="password-input" onChange={ setPassword }/>
-          <Button fullWidth mt="xl" id="log-in" disabled={!email || !password}>
-            Sign in
+            onChange={setEmail} required id="email-input"/>
+          { emailError }
+          <Button 
+            fullWidth
+            mt="xl" 
+            id="sign-up"
+            disabled={ (email == '') || (emailError != null) }
+            onClick={ createAccount }
+          >
+            Sign In
           </Button>
         </Paper>
       </Container>
