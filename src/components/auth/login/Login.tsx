@@ -1,7 +1,7 @@
+import MainLogo from '@/components/misc/MainLogo';
 import {
   TextInput,
   PasswordInput,
-  Checkbox,
   Anchor,
   Paper,
   Title,
@@ -11,9 +11,6 @@ import {
   Button,
   Center,
 } from '@mantine/core';
-import Image from 'next/image';
-import Password from './Password';
-import { useState } from 'react';
 import { useInputState } from '@mantine/hooks';
 
 export default function Login() {
@@ -23,7 +20,7 @@ export default function Login() {
   return (
     <>
       <Center mt={40}>
-        <Image src="/black_cat.png" width={200} height={200} alt="CATS Logo"/>
+        <MainLogo width={200} />
       </Center>
       <Container size={420} my={40}>
         <Title
@@ -42,15 +39,28 @@ export default function Login() {
 
         <Paper withBorder shadow="md" p={30} mt={30} radius="md">
           <TextInput label="Purdue Email" placeholder="pete@purdue.edu" 
-            onChange={setEmail} required id="email-input"/>
-          <PasswordInput label="Password" placeholder="Your password" 
-            required mt="md" id="password-input"/>
-          <Group position="center" mt="lg">
-            <Anchor size="sm" id="forgot-password">
-              Forgot password?
-            </Anchor>
-          </Group>
-          <Button fullWidth mt="xl" id="log-in">
+            onChange={ setEmail } required id="email-input"/>
+            <Group position="apart" mb={5} mt="md">
+              <Text component="label" htmlFor="your-password" size="sm" weight={500}>
+                Password
+              </Text>
+              <Anchor
+                id='forgot-password'
+                href="/forgotpassword"
+                onClick={(event) => event.preventDefault()}
+                sx={(theme) => ({
+                  paddingTop: 2,
+                  color: theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6],
+                  fontWeight: 500,
+                  fontSize: theme.fontSizes.xs,
+                })}
+              >
+                Forgot your password?
+              </Anchor>
+            </Group>
+            <PasswordInput placeholder="Your password" 
+                required id="password-input" onChange={ setPassword }/>
+          <Button fullWidth mt="xl" id="log-in" disabled={!email || !password}>
             Sign in
           </Button>
         </Paper>

@@ -29,7 +29,7 @@ describe('<Login>', () => {
 
     // forgot password button
     cy.get('#forgot-password')
-    .should('contain.text', 'Forgot password?')
+    .should('contain.text', 'Forgot your password?')
 
     cy.get('#log-in')
     .should('contain.text', 'Sign in')

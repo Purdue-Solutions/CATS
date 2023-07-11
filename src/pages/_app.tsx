@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 
+import { Notifications } from '@mantine/notifications'
+
 import StyleProvider from '@/providers/StyleProvider';
 import AuthProvider from '@/providers/AuthProvider';
 
@@ -16,6 +18,7 @@ export default function App(props: AppProps) {
 
       <StyleProvider>
         <AuthProvider>
+          <Notifications />
           <Component {...pageProps} />
         </AuthProvider>
       </StyleProvider>
