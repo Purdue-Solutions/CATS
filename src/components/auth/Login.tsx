@@ -7,8 +7,6 @@ import {
   Container,
   Button,
   Center,
-  Group,
-  Flex,
 } from '@mantine/core';
 import { useInputState } from '@mantine/hooks';
 import { notifications } from '@mantine/notifications';
