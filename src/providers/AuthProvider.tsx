@@ -1,4 +1,4 @@
-import { PropsWithChildren, useContext, useEffect, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import { AuthContext } from "@/contexts/AuthContext";
 
 import { getFirebaseAuth } from "@/lib/firebase/utils";
